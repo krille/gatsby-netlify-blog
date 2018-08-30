@@ -1,6 +1,6 @@
 backend:
-	name: github
-	repo: krille/gatsby-netlify-blog
+  name: github
+  repo: krille/gatsby-netlify-blog
 
 media_folder: static/assets
 
