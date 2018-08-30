@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import Img from 'gatsby-image'
 
 export default class PostPage extends Component {
   render() {
 	const { data } = this.props
+	const { frontmatter } = data.markdownRemark
 
 	if (!data) {
 		return null
@@ -10,8 +12,9 @@ export default class PostPage extends Component {
 
 	return (
 	  <div>
-		<h1>{data.markdownRemark.frontmatter.title}</h1>
-		<p>{data.markdownRemark.frontmatter.date}</p>
+		<img src={frontmatter.image} />
+		<h1>{frontmatter.title}</h1>
+		<p>{frontmatter.date}</p>
 		<div dangerouslySetInnerHTML={{
 			__html: data.markdownRemark.html
 		}} />
@@ -31,6 +34,7 @@ export const query = graphql`
 			frontmatter {
 				title
 				date(formatString: "MMMM DD YYYY")
+				image
 			}
 		}
 	}
